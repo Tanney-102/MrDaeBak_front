@@ -34,7 +34,7 @@ export const SecondPage = styled.div`
 
 export const MainCopy = styled.div`
     font-family: 'Cafe24Oneprettynight', '나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
-    font-size:6vw;
+    font-size:4.5rem;
 
     width:60%;
     margin:0 auto;
@@ -44,10 +44,12 @@ export const MainCopy = styled.div`
 
     @media ${theme.tabletL} {
         width:80%;
+        font-size:6vw;
     }
 
     @media ${theme.mobileL} {
         width:90%;
+        font-size:3rem;
     }
 `;
 
