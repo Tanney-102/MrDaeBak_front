@@ -19,6 +19,7 @@ const Home = () => {
     };
 
     useEffect(() => {
+        console.log('page loaded');
         window.addEventListener('scroll', movePage);
     }, []);
 
