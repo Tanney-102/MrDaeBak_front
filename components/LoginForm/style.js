@@ -4,11 +4,11 @@ import theme from '../../style/theme';
 export const Form = styled.form`
     width:70%;
     height:300px;
-    max-width:300px;
-    background-color: #2c2a29;
-    border:1px solid #50520D;
+    max-width:500px;
+    background-color: #fff;
+    border: 1px solid #dfdfdf;
     border-radius:5px;
-    box-shadow:0 0 2px 2px #2f2f2f;
+    box-shadow:0 0 2px 2px #dfdfdf;
 
     display:flex;
     flex-direction: column;
@@ -50,6 +50,7 @@ export const Button = styled.button`
     width: 47%;
     height: 100%;
     border-radius:3px;
+    background-color:#4c4a49;
     color:#fff;
 `;
 
@@ -70,5 +71,5 @@ export const HorizontalLine = styled.div`
 
 export const GuestLogin = styled.button`
     font-size:0.8rem;
-    color:${theme.fontSkyBlue};
+    color:#5DB09B;
 `;

@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 import Header from '../components/Header';
+import LoginForm from '../components/LoginForm';
 import OrderTypeBtn from '../components/OrderTypeBtn';
 import useWindowSize from '../hooks/useWindowSize';
-import { Main, Slide, FirstPage, SecondPage, 
+import { Main, Slide, FirstPage, SecondPage, ThirdPage,
         MainCopy, ScrollGuide, SecondCopy, Massage,
         SecondCopyBack } from '../style/indexStyle';
 
@@ -16,9 +17,15 @@ const Home = () => {
     const [scrollDir, setScrollDir] = useState(0);
     const mainRef = useRef(null);
     
-    const movePage = () => {
+    // down : 1
+    const movePage = useCallback(() => {
         setScrollDir(scrollPos - document.documentElement.scrollTop < 0 ? 1 : 0);
-    };
+        setScrollPos(document.documentElement.scrollTop);
+    }, []);
+
+    const moveToLoginPage = useCallback(() => {
+        setCurPage(2);
+    }, []);
 
     useEffect(() => {
         console.log('page loaded');
@@ -60,8 +67,11 @@ const Home = () => {
                                 </Massage>
                             </SecondCopy>
                         </SecondCopyBack>
-                        <OrderTypeBtn/>
+                        <OrderTypeBtn loginBtnCallback={moveToLoginPage}/>
                     </SecondPage>
+                    <ThirdPage style={{height:winSize[1]*1.01}}>
+                        <LoginForm />
+                    </ThirdPage>
                 </Slide>
             </Main>
         </>

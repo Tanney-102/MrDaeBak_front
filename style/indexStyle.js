@@ -58,7 +58,6 @@ export const SecondPage = styled.div`
     }
 `;
 
-// background-color:#2c2a29;
 // background: linear-gradient(#cfcfcf 50%, #bfbfbf 50%);
 // background-size: 100% 42px;
 export const SecondCopyBack = styled.div`
@@ -118,4 +117,16 @@ export const ScrollGuide = styled.div`
     left:50%;
     bottom:50px;
     transform: translateX(-50%);
+`;
+
+// background-color:#2c2a29;
+// background-color: ${theme.basicBackColor};
+export const ThirdPage = styled.div`
+    width:100%;
+    padding: 80px 20px;
+    background-color:#eceae9;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
 `;

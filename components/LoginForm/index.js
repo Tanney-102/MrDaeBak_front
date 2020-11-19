@@ -37,10 +37,10 @@ const LoginForm = () => {
                 <Input type="password" value={password} placeholder="비밀번호" autoComplete="off" onChange={onChangePassword} />
             </InputContainer>
             <ButtonContainer>
-                <Button className="btn-hover" style={{backgroundColor: btnActivation?theme.btnColor:theme.unactivatedBtn}}>
+                <Button className="btn-hover" style={{backgroundColor: btnActivation?'#4c4a49':'rgba(76, 74, 73, 0.55)'}}>
                     Login
                 </Button>
-                <Button className="btn-hover" onClick={openPopup} style={{backgroundColor: theme.btnColor}}>
+                <Button className="btn-hover" onClick={openPopup}>
                     Sign Up
                 </Button>
             </ButtonContainer>

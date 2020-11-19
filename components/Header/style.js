@@ -18,6 +18,7 @@ export const Logo = styled.h1`
     height:100%;
     margin:0 auto;
     color:#eee;
+    font-weight:bold;
     font-family: 'GmarketSansMedium', '나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
     font-size: 2.5rem;
     text-shadow:1px 1px 1px ${theme.borderColorLight};
@@ -26,7 +27,7 @@ export const Logo = styled.h1`
     flex-wrap:wrap;
     align-items:center;
 
-    transition: font-size, color, 0.1s ease;
+    transition: font-size, color, 0.2s ease;
 
     @media ${theme.tabletL} {
         width:80%;
