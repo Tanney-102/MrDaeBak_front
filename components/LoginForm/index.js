@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 
-import PopupLayout from '../PopupLayout';
-import SignupForm from '../SignupForm';
 import theme from '../../style/theme';
 import useInput from '../../hooks/useInput';
 import { Form, InputContainer, Input, ButtonContainer, Button, Partition, HorizontalLine, GuestLogin } from './style'; 
@@ -10,15 +9,6 @@ const LoginForm = () => {
     const [id, onChangeId] = useInput('');
     const [password, onChangePassword] = useInput('');
     const [btnActivation, setBtnActivation] = useState(false);
-    const [signupFormOn, setSignupFormOn] = useState(false);
-
-    const openPopup = useCallback(() => {
-        setSignupFormOn(true);
-    }, []);
-
-    const closePopup = useCallback(() => {
-        setSignupFormOn(false);
-    }, []);
 
     useEffect(() => {
         if(id != '' && password.length > 5) {
@@ -38,10 +28,12 @@ const LoginForm = () => {
             </InputContainer>
             <ButtonContainer>
                 <Button className="btn-hover" style={{backgroundColor: btnActivation?'#4c4a49':'rgba(76, 74, 73, 0.55)'}}>
-                    Login
+                    로그인
                 </Button>
-                <Button className="btn-hover" onClick={openPopup}>
-                    Sign Up
+                <Button className="btn-hover">
+                    <Link href="/signup"><a>    
+                        회원가입
+                    </a></Link>
                 </Button>
             </ButtonContainer>
             <Partition>

@@ -31,10 +31,6 @@ export const Input = styled.input`
     background-color: ${theme.backColorLight};
     margin-left:3px;
     font-size: 0.7rem;
-
-    &:focus .input-container {
-        border: 1px solid red;
-    }
 `
 
 export const ButtonContainer = styled.div`
