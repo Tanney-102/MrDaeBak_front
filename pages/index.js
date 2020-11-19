@@ -5,7 +5,9 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import Header from '../components/Header';
 import OrderTypeBtn from '../components/OrderTypeBtn';
 import useWindowSize from '../hooks/useWindowSize';
-import { Main, Slide, FirstPage, SecondPage, MainCopy, ScrollGuide, SecondCopy, SecondCopyBack } from '../style/indexStyle';
+import { Main, Slide, FirstPage, SecondPage, 
+        MainCopy, ScrollGuide, SecondCopy, Massage,
+        SecondCopyBack } from '../style/indexStyle';
 
 const Home = () => {
     const winSize = useWindowSize();
@@ -49,17 +51,13 @@ const Home = () => {
                     <SecondPage style={{height:winSize[1]*1.01}}>
                         <SecondCopyBack>
                             <SecondCopy>
-                                <div style={{
-                                    position:'absolute',
-                                    left:'70px',
-                                    top:'60px'
-                                }}>
+                                <Massage>
                                     여보!<br />
                                     우리 오늘 저녁에<br />
                                     미스터 대박 어때요?<br />
                                     당신 취향대로<br />
                                     주문해줘요~
-                                </div>
+                                </Massage>
                             </SecondCopy>
                         </SecondCopyBack>
                         <OrderTypeBtn/>

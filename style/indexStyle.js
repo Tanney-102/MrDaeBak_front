@@ -46,11 +46,16 @@ export const MainCopy = styled.div`
 
 export const SecondPage = styled.div`
     width:100%;
+    padding: 80px 0;
     background-color:#1B332D;
 
     display:flex;
     justify-content:center;
     align-items:center;
+
+    @media ${theme.mobileL} {
+        flex-direction:column;
+    }
 `;
 
 // background-color:#2c2a29;
@@ -67,23 +72,42 @@ export const SecondCopyBack = styled.div`
     box-shadow:5px 5px 7px 7px #0E1A17;
 
     @media ${theme.mobileL} {
-        display:none;
+        width:200px;
+        height:281.25px;
     }
 `;
 
 export const SecondCopy = styled.div`
     width:320px;
     height:450px;
-    font-family: 'Cafe24Oneprettynight', '나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
-    font-size:1.2rem;
-    line-height:1.5;
     
     background: top no-repeat url('/img/white_post.png');
     background-size:80%;
     position:relative;
     left:40px;
+
+    @media ${theme.mobileL} {
+        width:200px;
+        height:281.25px;
+        left:25px;
+    }
 `;
 
+export const Massage = styled.div`
+    position:absolute;
+    left:70px;
+    top:60px;
+    font-family: 'Cafe24Oneprettynight', '나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
+    font-size:1.2rem;
+    line-height:1.5;
+
+    @media ${theme.mobileL} {
+        left:43.75px;
+        top:37.5px;
+        font-size:0.75rem;
+        line-height:1.5;
+    }
+`;
 
 export const ScrollGuide = styled.div`
     font-family: 'Cafe24Shiningstar', '나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
