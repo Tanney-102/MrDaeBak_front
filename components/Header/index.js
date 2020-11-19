@@ -13,7 +13,6 @@ const Header = ({ headerType }) => {
             transitionDelay: headerType ? '0.4s' : '0.1s',
             }}>
                 <Logo style={{
-                    color: headerType ? theme.fontDarkGray : '#eee',
                     fontSize: headerType ? '1.5rem' : '2.5rem',
                     transitionDelay: headerType ? '0.4s' : '0.1s',
                 }}>

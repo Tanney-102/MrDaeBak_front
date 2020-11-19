@@ -5,8 +5,10 @@ export const Form = styled.form`
     width:70%;
     height:300px;
     max-width:300px;
-    background-color: #fff;
-    border:1px solid ${theme.borderColor};
+    background-color: #2c2a29;
+    border:1px solid #50520D;
+    border-radius:5px;
+    box-shadow:0 0 2px 2px #2f2f2f;
 
     display:flex;
     flex-direction: column;

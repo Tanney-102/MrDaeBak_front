@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 import Header from '../components/Header';
-import LoginForm from '../components/LoginForm';
+import OrderTypeBtn from '../components/OrderTypeBtn';
 import useWindowSize from '../hooks/useWindowSize';
-import { Main, Slide, FirstPage, SecondPage, MainCopy, ScrollGuide } from '../style/indexStyle';
+import { Main, Slide, FirstPage, SecondPage, MainCopy, ScrollGuide, SecondCopy, SecondCopyBack } from '../style/indexStyle';
 
 const Home = () => {
     const winSize = useWindowSize();
@@ -47,7 +47,22 @@ const Home = () => {
                         </ScrollGuide>
                     </FirstPage>
                     <SecondPage style={{height:winSize[1]*1.01}}>
-                        <LoginForm />
+                        <SecondCopyBack>
+                            <SecondCopy>
+                                <div style={{
+                                    position:'absolute',
+                                    left:'70px',
+                                    top:'60px'
+                                }}>
+                                    여보!<br />
+                                    우리 오늘 저녁에<br />
+                                    미스터 대박 어때요?<br />
+                                    당신 취향대로<br />
+                                    주문해줘요~
+                                </div>
+                            </SecondCopy>
+                        </SecondCopyBack>
+                        <OrderTypeBtn/>
                     </SecondPage>
                 </Slide>
             </Main>

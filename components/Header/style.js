@@ -17,6 +17,7 @@ export const Logo = styled.h1`
     width:60%;
     height:100%;
     margin:0 auto;
+    color:#eee;
     font-family: 'GmarketSansMedium', '나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
     font-size: 2.5rem;
     text-shadow:1px 1px 1px ${theme.borderColorLight};
