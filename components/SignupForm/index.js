@@ -6,6 +6,7 @@ import useInput from '../../hooks/useInput';
 import { Form, InputContainer, Input } from '../LoginForm/style';
 
 const url = 'https://mr-daebak.herokuapp.com'
+// const url = 'http://localhost:5000'
 
 const VerifyBtn = styled.button`
     width: 19%;
@@ -29,15 +30,19 @@ const SignupForm = () => {
     const inputRef_name = useRef(null);
 
     const verifyId = useCallback(async () => {
-        await axios.post(url+'/duplicate_id/', {
-            'user_id' : id
+        await axios.post(url+'/duplicate_id', {
+                user_id : id
+            }, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
         })
         .then(res => {
-            if(res.check_id_dup && confirm('사용가능한 아이디입니다. 사용하시겠습니까?')) {
+            if(res.data.check_id_dup && confirm('사용가능한 아이디입니다. 사용하시겠습니까?')) {
                 setIdChecked(true);
                 inputRef_id.current.setAttribute('readonly', 'readonly');
             } else {
-                console.log(res.massage);
+                alert('이미 사용 중인 아이디입니다.');
             }
         })
         .catch(err => console.error(err));
