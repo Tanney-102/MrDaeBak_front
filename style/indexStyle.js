@@ -53,7 +53,7 @@ export const SecondPage = styled.div`
     justify-content:center;
     align-items:center;
 
-    @media ${theme.mobileL} {
+    @media (max-width:800px) {
         flex-direction:column;
     }
 `;
@@ -71,7 +71,7 @@ export const SecondCopyBack = styled.div`
     border-radius:10px;
     box-shadow:5px 5px 7px 7px #0E1A17;
 
-    @media ${theme.mobileL} {
+    @media (max-width:800px) {
         width:200px;
         height:281.25px;
     }
@@ -86,7 +86,7 @@ export const SecondCopy = styled.div`
     position:relative;
     left:40px;
 
-    @media ${theme.mobileL} {
+    @media (max-width:800px) {
         width:200px;
         height:281.25px;
         left:25px;
@@ -101,7 +101,7 @@ export const Massage = styled.div`
     font-size:1.2rem;
     line-height:1.5;
 
-    @media ${theme.mobileL} {
+    @media (max-width:800px) {
         left:43.75px;
         top:37.5px;
         font-size:0.75rem;

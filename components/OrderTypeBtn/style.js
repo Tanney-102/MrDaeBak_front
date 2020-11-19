@@ -22,4 +22,9 @@ export const OrderBtn = styled.button`
         transform: scale(1.1);
         transition: all 0.1s ease;
     };
+
+    @media (max-width:800px) {
+        line-heigth:1.5;
+        font-size:2.5rem;
+    }
 `;
