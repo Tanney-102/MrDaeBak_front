@@ -29,8 +29,8 @@ const SignupForm = () => {
     const inputRef_name = useRef(null);
 
     const verifyId = useCallback(async () => {
-        await axios.post(url+'/duplicate_id', {
-            user_id : id
+        await axios.post(url+'/duplicate_id/', {
+            'user_id' : id
         })
         .then(res => {
             if(res.check_id_dup && confirm('사용가능한 아이디입니다. 사용하시겠습니까?')) {
