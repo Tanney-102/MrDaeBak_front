@@ -23,13 +23,17 @@ const SignupForm = () => {
     const [name ,onChangeName] = useInput('');
     const [password, onChangePassword] = useInput('');
     const [password2, onChangePassword2] =useInput('');
-    const [idChecked, setIdChecked] = useState('false');
-    const [nameChecked, setNameChecked] = useState('false');
+    const [idChecked, setIdChecked] = useState(false);
+    const [nameChecked, setNameChecked] = useState(false);
     const [btnActivation, setBtnActivation] = useState(false);
     const inputRef_id = useRef(null);
     const inputRef_name = useRef(null);
+    const inputContRef_id = useRef(null);
+    const inputContRef_name = useRef(null);
 
     const verifyId = useCallback(async () => {
+        if(idChecked) return;
+
         await axios.post(url+'/duplicate_id', {
                 user_id : id
             }, {
@@ -41,24 +45,45 @@ const SignupForm = () => {
             if(res.data.check_id_dup && confirm('사용가능한 아이디입니다. 사용하시겠습니까?')) {
                 setIdChecked(true);
                 inputRef_id.current.setAttribute('readonly', 'readonly');
+                inputRef_id.current.style.backgroundColor = '#dfdfdf'
+                inputContRef_id.current.style.backgroundColor = '#dfdfdf'
             } else {
                 alert('이미 사용 중인 아이디입니다.');
             }
         })
         .catch(err => console.error(err));
-    }, [id]);
+    }, [id, idChecked]);
 
-    const verifyName = useCallback(() => {
+    const verifyName = useCallback(async () => {
+        if(nameChecked) return;
 
-    }, [name]);
+        await axios.post(url+'/duplicate_name', {
+            user_name : name
+        }, {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(res => {
+        if(res.data.check_name_dup && confirm('사용가능한 이름입니다. 사용하시겠습니까?')) {
+            setNameChecked(true);
+            inputRef_name.current.setAttribute('readonly', 'readonly');
+            inputRef_name.current.style.backgroundColor = '#dfdfdf'
+            inputContRef_name.current.style.backgroundColor = '#dfdfdf'
+        } else {
+            alert('이미 사용 중인 이름입니다.');
+        }
+    })
+    .catch(err => console.error(err));
+    }, [name, nameChecked]);
     
     return (
         <Form style={{height:'400px', marginTop:'30px'}} onSubmit={e => { e.preventDefault(); }}>
-            <InputContainer style={{width:'70%'}}>
+            <InputContainer style={{width:'70%'}} ref={inputContRef_id}>
                 <Input2 ref={inputRef_id} type="text" value={id} placeholder="아이디" autoComplete="off" onChange={onChangeId} />
                 <VerifyBtn className="btn-hover" onClick={verifyId}>중복확인</VerifyBtn>
             </InputContainer>
-            <InputContainer style={{width:'70%'}}>
+            <InputContainer style={{width:'70%'}} ref={inputContRef_name}>
                 <Input2 ref={inputRef_name} type="text" value={name} placeholder="닉네임" autoComplete="off" onChange={onChangeName} />
                 <VerifyBtn className="btn-hover" onClick={verifyName}>중복확인</VerifyBtn>
             </InputContainer>
