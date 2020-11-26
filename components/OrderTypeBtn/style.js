@@ -6,9 +6,10 @@ export const OrderTypeBtnCont = styled.div`
     height:300px;
     margin:0 30px;
 
-    display:felx;
+    display:flex;
+    flex-direction:column;
     justify-content:center;
-    align-items:center;
+    align-items:flex-start;
 `;
 
 export const OrderBtn = styled.button`

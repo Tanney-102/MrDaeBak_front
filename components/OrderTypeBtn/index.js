@@ -1,26 +1,38 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Proptypes from 'prop-types';
-import Link from 'next/link';
+import { useDispatch } from 'react-redux';
 
 import { OrderTypeBtnCont, OrderBtn } from './style';
+import { login } from '../../reducers/user';
 
-const OrderTypeBtn = ({ loginBtnCallback }) => {
+const OrderTypeBtn = ({ loginBtnCallback, curPage }) => {
     const [clicked, setClicked] = useState(false);
+    const dispatch = useDispatch();
 
     const clickOrderTypeBtn = useCallback(() => {
         setClicked(true);
     }, []);
 
     const orderASGuest = useCallback(() => {
-
+        dispatch(login({
+            userId: 'guest',
+            userName: 'guest',
+            address: '',
+            classification: 'guest'
+        }));
     },[]);
+
+    useEffect(() => {
+        if(curPage===0)
+            setClicked(false);
+    }, [curPage]);
 
     return (
         <OrderTypeBtnCont>
             {clicked ?
             <>
             <OrderBtn className="btn-hover" onClick={loginBtnCallback}>
-                    회원 주문
+                회원 주문
             </OrderBtn><br />
             <OrderBtn className="btn-hover" onClick={orderASGuest}>
                 비회원 주문
@@ -36,6 +48,7 @@ const OrderTypeBtn = ({ loginBtnCallback }) => {
 
 OrderTypeBtn.propTypes = {
     loginBtnCallback: Proptypes.func.isRequired,
+    curPage: Proptypes.number.isRequired,
 };
 
 export default OrderTypeBtn;

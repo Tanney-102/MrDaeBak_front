@@ -1,6 +1,18 @@
 import styled from 'styled-components';
 import theme from '../../style/theme';
 
+export const Title = styled.h1`
+    width:60%;
+    margin-bottom:20px;
+    font-family: 'GmarketSansMedium', '나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
+    font-size:1.2rem;
+    font-weight:bold
+    color:#333;
+
+    display:flex;
+    justify-content:flex-begin;
+`;
+
 export const Form = styled.form`
     width:70%;
     height:300px;
