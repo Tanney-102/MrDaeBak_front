@@ -29,7 +29,7 @@ const StockPage = () => {
     const changeMode = useCallback(() => {
         setUpdateMode(true);
         setTmpData(data);
-    }, []);
+    }, [data]);
 
     const saveData = useCallback(async () => {
         setLoaded(false);
@@ -49,7 +49,7 @@ const StockPage = () => {
     const cancelUpdate = useCallback(() => {
         setData(tmpData);
         setUpdateMode(false);
-    }, []);
+    }, [tmpData]);
 
     useEffect(() => {
         getStockInfo();

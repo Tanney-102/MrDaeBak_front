@@ -1,17 +1,26 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
 
 import useWindowSize from '../../hooks/useWindowSize';
 import { Main, BtnContainer, MenuBtn, Slide, PageContainer, BackBtn } from './style';
+import { LogoutBtn } from '../UserPage/style';
 import StockPage from '../StockPage';
 import LoadingPage from '../LoadingPage';
+import { logoutRequest } from '../../reducers/user';
 
 const ManagerPage = () => {
     const winSize = useWindowSize();
     const [curPage, setCurPage] = useState(1);
     const [loaded, setLoaded] = useState(false);
     const slideRef = useRef(null);
+    const dispatch = useDispatch();
+
+    const logout = useCallback(() => {
+        localStorage.removeItem('Token');
+        dispatch(logoutRequest());
+    }, []);
 
     useEffect(() => {
         setLoaded(true);
@@ -20,7 +29,6 @@ const ManagerPage = () => {
     useEffect(() => {
         if(loaded) {
             slideRef.current.style.transform = `translateX(-${curPage*100/3}%)`;
-            slideRef.current.style.transition = 'all 0.5s ease-in-out'
         }
     }, [curPage, loaded]);
 
@@ -65,6 +73,7 @@ const ManagerPage = () => {
                     }}>
                 <FontAwesomeIcon icon={faChevronLeft} />
             </BackBtn>
+            <LogoutBtn className="btn-hover" onClick={logout}>로그아웃</LogoutBtn>
         </Main>
     );
 };

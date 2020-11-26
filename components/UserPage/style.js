@@ -11,3 +11,25 @@ export const Main = styled.main`
     justify-content:center;
     align-items:center;
 `;
+
+export const LogoutBtn = styled.button`
+    width:80px;
+    height:30px;
+    border:2px solid #3D7365;
+    border-radius:10px;
+    font-size:0.8rem;
+    color:#3D7365;
+    
+    position:fixed;
+    top:100px;
+    right:10px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    &:hover {
+        color:#fff;
+        background-color:#3D7365;
+    }
+`;

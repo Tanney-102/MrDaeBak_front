@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { useDispatch } from 'react-redux';
@@ -6,30 +6,47 @@ import { useDispatch } from 'react-redux';
 import theme from '../../style/theme';
 import useInput from '../../hooks/useInput';
 import { Form, Title, InputContainer, Input, ButtonContainer, Button, Partition, HorizontalLine, GuestLogin } from './style'; 
-import { login } from '../../reducers/user';
+import { loginRequest, LOG_IN } from '../../reducers/user';
+import axios from 'axios';
 
 const LoginForm = ({ loginFormType }) => {
     const [id, onChangeId] = useInput('');
     const [password, onChangePassword] = useInput('');
     const [btnActivation, setBtnActivation] = useState(false);
+    const loginFormRef = useRef();
     const dispatch = useDispatch();
 
     const orderASGuest = useCallback(() => {
-        dispatch(login({
-            userId: 'guest',
-            userName: 'guest',
-            address: '',
-            classification: 'guest'
-        }));
+        dispatch({ 
+            type : LOG_IN,
+            data : {
+                userId: 'guest',
+                userName: 'guest',
+                classification: 'guest'
+            }
+        });
     },[]);
 
+    const login = useCallback(() => {
+        if(!btnActivation) return;
+
+        const form = new FormData(loginFormRef.current);
+        form.append('login_type', loginFormType);
+        
+        loginRequest(form).then(res => {
+            dispatch(res);
+        });
+    }, [btnActivation]);
+
     const fakeManager = useCallback(() => {
-        dispatch(login({
-            userId: 'guest',
-            userName: 'guest',
-            address: '',
-            classification: 'manager'
-        }));
+        dispatch({ 
+            type : LOG_IN,
+            data : {
+                userId: 'guest',
+                userName: 'guest',
+                classification: 'manager'
+            }
+        });
     },[]);
 
     useEffect(() => {
@@ -41,16 +58,20 @@ const LoginForm = ({ loginFormType }) => {
     }, [id, password]);
 
     return (
-        <Form onSubmit={e => { e.preventDefault(); }}>
+        <Form ref={loginFormRef} onSubmit={e => { e.preventDefault(); }}>
             <Title>{loginFormType==='member' ? '회원 로그인' : '관리자 로그인'}</Title>
             <InputContainer className="input-container">
-                <Input type="text" value={id} placeholder="아이디" autoComplete="off" onChange={onChangeId} />
+                <Input type="text" name="user_id" value={id} placeholder="아이디" autoComplete="off" onChange={onChangeId} />
             </InputContainer>
             <InputContainer className="input-container">
-                <Input type="password" value={password} placeholder="비밀번호" autoComplete="off" onChange={onChangePassword} />
+                <Input type="password" name="user_password" value={password} placeholder="비밀번호" autoComplete="off" onChange={onChangePassword} />
             </InputContainer>
             <ButtonContainer style={{justifyContent:loginFormType==='manager'?'flex-end':''}}>
-                <Button className={btnActivation ? "btn-hover" : ""} style={{backgroundColor: btnActivation?'#4c4a49':'rgba(76, 74, 73, 0.55)'}}>
+                <Button 
+                    className={btnActivation ? "btn-hover" : ""} 
+                    style={{backgroundColor: btnActivation?'#4c4a49':'rgba(76, 74, 73, 0.55)'}}
+                    onClick={login}
+                    >
                     로그인
                 </Button>
                 {loginFormType === 'member' && <Button className="btn-hover">

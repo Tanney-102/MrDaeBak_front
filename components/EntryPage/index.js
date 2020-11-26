@@ -10,6 +10,11 @@ import { Main, Slide, FirstPage, SecondPage, ThirdPage,
         MainCopy, ScrollGuide, SecondCopy, Massage,
         SecondCopyBack, ManagerLoginBtn } from './style';
 
+const preload = () => {
+    const load = new Image();
+    load.src = '/img/main_back_img.jpg';
+};
+
 const MainPage = () => {
     const winSize = useWindowSize();
     const [curPage, setCurPage] = useState(0);
@@ -35,8 +40,8 @@ const MainPage = () => {
     }, []);
 
     useEffect(() => {
-        console.log('page loaded');
         window.addEventListener('scroll', movePage);
+        preload();
     }, []);
 
     useEffect(() => {

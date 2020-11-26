@@ -107,7 +107,6 @@ const SignupForm = () => {
 
     const submitSignupData = useCallback(async (e) => {
         if(!btnActivation) {
-            console.log('false');
             return;
         }
 
@@ -120,8 +119,11 @@ const SignupForm = () => {
             alert("가입에 성공했습니다! 로그인해주세요.");
             location.href="/"
         })
-        .catch(err => console.error(err));
-    }, []);
+        .catch(err => {
+            console.error(err)
+            alert('회원가입에 실패했습니다. : ' + err);
+        });
+    }, [btnActivation]);
     
     useEffect(() => {
         if(idChecked && nameChecked && validPw && pwChecked) {

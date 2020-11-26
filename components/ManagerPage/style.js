@@ -47,6 +47,7 @@ export const MenuBtn = styled.button`
 `;
 
 export const Slide = styled.div`
+    transition: all 0.5s ease-in-out;
     display:flex;
 `;
 

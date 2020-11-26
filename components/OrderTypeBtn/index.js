@@ -3,7 +3,7 @@ import Proptypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
 import { OrderTypeBtnCont, OrderBtn } from './style';
-import { login } from '../../reducers/user';
+import { LOG_IN } from '../../reducers/user';
 
 const OrderTypeBtn = ({ loginBtnCallback, curPage }) => {
     const [clicked, setClicked] = useState(false);
@@ -14,12 +14,15 @@ const OrderTypeBtn = ({ loginBtnCallback, curPage }) => {
     }, []);
 
     const orderASGuest = useCallback(() => {
-        dispatch(login({
-            userId: 'guest',
-            userName: 'guest',
-            address: '',
-            classification: 'guest'
-        }));
+        dispatch({
+            type : LOG_IN,
+            data: {
+                userId: 'guest',
+                userName: 'guest',
+                address: '',
+                classification: 'guest'
+            }
+        });
     },[]);
 
     useEffect(() => {
