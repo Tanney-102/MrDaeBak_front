@@ -7,7 +7,6 @@ import theme from '../../style/theme';
 import useInput from '../../hooks/useInput';
 import { Form, Title, InputContainer, Input, ButtonContainer, Button, Partition, HorizontalLine, GuestLogin } from './style'; 
 import { loginRequest, LOG_IN } from '../../reducers/user';
-import axios from 'axios';
 
 const LoginForm = ({ loginFormType }) => {
     const [id, onChangeId] = useInput('');

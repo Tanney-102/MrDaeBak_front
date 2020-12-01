@@ -42,6 +42,10 @@ const MainPage = () => {
     useEffect(() => {
         window.addEventListener('scroll', movePage);
         preload();
+
+        return () => {
+            window.removeEventListener('scroll', movePage);
+        };
     }, []);
 
     useEffect(() => {

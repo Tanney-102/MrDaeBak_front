@@ -27,7 +27,6 @@ export const loginRequest = async (form) => {
 
             if(result.success == 'true') {
                 localStorage.Token = result.access_token;
-                console.log(result.access_token);
                 type = LOG_IN;
                 data.userId = result.user_id,
                 data.userName = result.user_name,

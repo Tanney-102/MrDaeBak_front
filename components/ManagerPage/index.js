@@ -73,7 +73,16 @@ const ManagerPage = () => {
                     }}>
                 <FontAwesomeIcon icon={faChevronLeft} />
             </BackBtn>
-            <LogoutBtn className="btn-hover" onClick={logout}>로그아웃</LogoutBtn>
+            <LogoutBtn 
+                className="btn-hover" 
+                onClick={logout}
+                style={{
+                  position:'fixed',
+                  top:'100px',
+                  right:'20px'  
+                }}>
+                로그아웃
+            </LogoutBtn>
         </Main>
     );
 };

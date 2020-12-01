@@ -3,13 +3,12 @@ import styled from 'styled-components';
 export const Main = styled.main`
     width:100%;
     background-color:#eceae9;
-    position:relative;
     overflow:hidden;
-    padding: 80px 20px;
+    padding: 80px 0;
 
     display:flex;
+    flex-wrap:wrap;
     justify-content:center;
-    align-items:center;
 `;
 
 export const LogoutBtn = styled.button`
@@ -20,10 +19,6 @@ export const LogoutBtn = styled.button`
     font-size:0.8rem;
     color:#3D7365;
     
-    position:fixed;
-    top:100px;
-    right:10px;
-
     display:flex;
     justify-content:center;
     align-items:center;
@@ -32,4 +27,14 @@ export const LogoutBtn = styled.button`
         color:#fff;
         background-color:#3D7365;
     }
+`;
+
+export const BtnContainer = styled.div`
+    width:100%;
+    height:60px;
+    padding: 0 20px;
+
+    display:flex;
+    justify-content: flex-end;
+    align-items:center;
 `;
