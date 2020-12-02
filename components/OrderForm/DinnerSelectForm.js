@@ -1,16 +1,22 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import axios from 'axios'
 
-import { dinnerStateDummy } from './dummy';
 import { FormContainer, ContentCard, NameCard, 
         SelectBtn, ToggleBtn, Drop, SubmitBtn, SoldOut } from './style';
 import { setDinnerName } from '../../reducers/order';
+import LoadingPage from '../LoadingPage';
 
-const getDinnerState = () => {
-    return dinnerStateDummy;
+const getDinnerState = async () => {
+    const dinnerState = await axios.get('/orderstate')
+        .then(res => res.data)
+        .catch(err => console.error(err))
+
+    return dinnerState;
 };
 
 const DinnerSelectForm = () => {
+    const [loaded, setLoaded] = useState(false);
     const [dinnerList, setDinnerList] = useState([]);
     const [selectedIdx, setSelectedIdx] = useState(-1);
     const [detailBtnAct, setDetailBtnAct] = useState([]);
@@ -42,19 +48,27 @@ const DinnerSelectForm = () => {
         }
 
         const info = dinnerList[selectedIdx];
+
         dispatch(setDinnerName(info));
     };
 
     useEffect(() => {
-        const dinnerState = getDinnerState();
+        let len = 0;
+
+        getDinnerState()
+        .then(res => {
+            setDinnerList(res)
+            setDetailBtnAct(Array(res.length).fill(0));
+
+            len = res.length;            
+        })
+        .then(() => setLoaded(true));
+
         const deactDetailBtn = (e) => {
             if(e.target.dataset.detailIndex === undefined) {
-                setDetailBtnAct(Array(dinnerState.length).fill(0));
+                setDetailBtnAct(Array(len).fill(0));
             }
         }
-
-        setDinnerList(dinnerState);
-        setDetailBtnAct(Array(dinnerState.length).fill(0));
 
         document.addEventListener('click', deactDetailBtn);
 
@@ -64,6 +78,8 @@ const DinnerSelectForm = () => {
     }, []);
 
     return (
+        <>
+        {!loaded ? <LoadingPage />:
         <FormContainer onClick={selectDinner}>
             {dinnerList.map((content, i) => {
                 return (
@@ -128,7 +144,8 @@ const DinnerSelectForm = () => {
             <SubmitBtn className="btn-hover" onClick={setDinnerInfo}>
                 다음
             </SubmitBtn>
-        </FormContainer>
+        </FormContainer>}
+        </>
     );
 }
 

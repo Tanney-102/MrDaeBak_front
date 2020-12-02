@@ -20,6 +20,7 @@ export const SET_DINNER_OPTION = 'SET_DINNER_OPTION';
 export const BACK_TO_DINNER = 'BACK_TO_DINNER';
 export const BACK_TO_STYLE = 'BACK_TO_STYLE';
 export const BACK_TO_OPTION = 'BACK_TO_OPTION';
+export const BACK_TO_TIME_SEL = 'BACK_TO_TIME_SEL';
 
 export const setDinnerName = (data) => {
     return {
@@ -92,14 +93,20 @@ export const backToOption = () => {
     };
 };
 
+export const backToTimeSel = () => {
+    return {
+        type: BACK_TO_TIME_SEL,
+    };
+}
+
 const reducer = (state=initialState, action) => {
     switch(action.type) {
         case SET_DINNER_NAME:
             return {
                 ...state,
                 step: 2,
-                dinnerId: action.data.id,
-                dinnerName: action.data.name,
+                dinnerId: action.data.dinnerId,
+                dinnerName: action.data.dinnerName,
                 special: action.data.special,
                 price: action.data.price,
             };
@@ -139,6 +146,12 @@ const reducer = (state=initialState, action) => {
                 step: 3,
                 option: [],
                 optionPrice: 0,
+            };
+        case BACK_TO_TIME_SEL:
+            return {
+                ...state,
+                step: 4,
+                time: '',
             };
         default:
             return state;

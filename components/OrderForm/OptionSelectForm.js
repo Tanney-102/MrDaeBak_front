@@ -2,15 +2,14 @@ import React, { useState ,useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle, faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 import { FormContainer, ContentCard, OptionLi, NameCard, Title, SizeUpBtn, SubmitBtn } from './style';
 import { optionsDummy } from './dummy';
 import LoadingPage from '../LoadingPage';
 import { setDinnerOption } from '../../reducers/order';
 
-const getOpList = () => {
-    return optionsDummy;
-};
+
 
 const OptionSelectForm = ({ dinnerId }) => {
     const [originalOpt, setOriginalOpt] = useState(null);
@@ -18,6 +17,13 @@ const OptionSelectForm = ({ dinnerId }) => {
     const [extraBtnAct, setExtraBtnAct] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const dispatch = useDispatch();
+
+    const getOpList = useCallback(async () => {
+        const options = await axios.get(`/options?dinnerId=${dinnerId}`)
+            .then(res => res.data)
+            .catch(err => console.error(err));
+        return options;
+    }, []);
 
     const sizeup = useCallback((idx) => {
         setExtraBtnAct(prev => {
@@ -163,7 +169,7 @@ const OptionSelectForm = ({ dinnerId }) => {
                 data.push(tmp);
             }
         });
-        console.log(optionList.extra);
+
         optionList.extra.forEach(v => {
             if(originalOpt.has(v.menuId)) {
                 data.push({
@@ -175,21 +181,22 @@ const OptionSelectForm = ({ dinnerId }) => {
         });
 
         dispatch(setDinnerOption(data));
-    }, [optionList, extraBtnAct]);
+    }, [originalOpt, optionList, extraBtnAct]);
 
     ////
     useEffect(async () => {
-        const opList = getOpList();
-        const origin = new Set();
+        getOpList()
+        .then(res => {
+            const origin = new Set();
+            res.options.forEach(v => {
+                origin.add(v.menuId);
+            });
 
-        opList.options.forEach(v => {
-            origin.add(v.menuId);
-        });
-
-        setOptionList(opList);
-        setExtraBtnAct(Array(opList.options.length).fill(0));
-        setOriginalOpt(origin);
-        setLoaded(true);
+            setOptionList(res);
+            setExtraBtnAct(Array(res.options.length).fill(0));
+            setOriginalOpt(origin);
+        })
+        .then(() => setLoaded(true));
     }, []);
 
     return (
@@ -214,7 +221,7 @@ const OptionSelectForm = ({ dinnerId }) => {
                     return (
                         <OptionLi key={option.menuName + i}>
                             <div style={{display:'flex'}}>
-                                <NameCard style={{width:'80px'}}>
+                                <NameCard style={{marginRight:'10px'}}>
                                     {option.menuName}
                                 </NameCard>
                                 <div style={{

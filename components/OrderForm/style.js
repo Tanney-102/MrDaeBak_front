@@ -216,3 +216,17 @@ export const SizeUpBtn = styled.button`
     justify-content:center;
     align-items:center;
 `;
+
+export const TimeBtnContainer = styled.div`
+    width:100%;
+    max-width: 900px;
+    height:300px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media ${theme.mobileL} {
+        flex-direction: column;
+        height:1000px;
+    }
+`;

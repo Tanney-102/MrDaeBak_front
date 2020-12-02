@@ -2,11 +2,12 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Container, Title, Sub, BackBtn } from './style';
-import { backToDinner, backToStyle, backToOption } from '../../reducers/order';
+import { backToDinner, backToStyle, backToOption, backToTimeSel } from '../../reducers/order';
 import DinnerSelectForm from './DinnerSelectForm';
 import StyleSelectForm from './StyleSelectForm';
 import OptionSelectForm from './OptionSelectForm';
 import OrderInfoForm from './OrderInfoForm';
+import TimeSelectForm from './TimeSelectForm';
 
 const switchSubTitle = (step) => {
     switch(step) {
@@ -17,7 +18,9 @@ const switchSubTitle = (step) => {
         case 3:
             return 'Options';
         case 4:
-            return 'Order Informatoin';
+            return 'Time';
+        case 5:
+            return 'Info'
         default:
             return '';
     }
@@ -32,7 +35,9 @@ const switchSelectForm = (step, dinnerId) => {
         case 3:
             return <OptionSelectForm dinnerId={dinnerId} />;
         case 4:
-            return <OrderInfoForm />;
+            return <TimeSelectForm />;
+        case 5:
+            return <OrderInfoForm />
         default:
             return '';
     }
@@ -53,6 +58,8 @@ const OrderForm = () => {
             case 4:
                 dispatch(backToOption());
                 break;
+            case 5:
+                dispatch(backToTimeSel());
             default:
                 break;
         }
