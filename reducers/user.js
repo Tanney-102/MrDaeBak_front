@@ -5,7 +5,8 @@ export const initialState = {
     userInfo: {
         userId: '',
         userName: '',
-        classification: ''
+        classification: '',
+        address: '',
     },  
 };
 
@@ -19,6 +20,7 @@ export const loginRequest = async (form) => {
         userId: '',
         userName: '',
         classification: '',
+        address: '',
     };
 
     await axios.post('/login', form)
@@ -28,9 +30,10 @@ export const loginRequest = async (form) => {
             if(result.success == 'true') {
                 localStorage.Token = result.access_token;
                 type = LOG_IN;
-                data.userId = result.user_id,
-                data.userName = result.user_name,
-                data.classification = result.classification
+                data.userId = result.user_id;
+                data.userName = result.user_name;
+                data.classification = result.classification;
+                data.address = result.address;
             } else {
                 switch(result.message) {
                     case 'invalid id':
@@ -63,7 +66,7 @@ export const verifyLoginState = async () => {
     const config = {
         headers: localStorage.Token ? { Authorization: localStorage.Token } : {}
     }
-    console.log(localStorage.Token);
+
     const action = await axios.get('/login', config)
         .then(res => {
             const result = res.data;

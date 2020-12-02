@@ -8,7 +8,7 @@ import { setDinnerName } from '../../reducers/order';
 import LoadingPage from '../LoadingPage';
 
 const getDinnerState = async () => {
-    const dinnerState = await axios.get('/orderstate')
+    const dinnerState = await axios.get('/orderstate?req=dinnerState')
         .then(res => res.data)
         .catch(err => console.error(err))
 

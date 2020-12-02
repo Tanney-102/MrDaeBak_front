@@ -5,7 +5,8 @@ export const Main = styled.main`
     width:100%;
     background-color:#eceae9;
     position:relative;
-    overflow:hidden;
+    overflow-x:hidden;
+    overflow-y:auto;
 `;
 
 export const PageContainer = styled.div`
@@ -55,7 +56,7 @@ export const BackBtn = styled.button`
     color:#4c4a49;
     font-size:2.5rem;
     padding:0 20px;
-    position: absolute;
+    position: fixed;
     top:50%;
 
     @media ${theme.tabletL} {

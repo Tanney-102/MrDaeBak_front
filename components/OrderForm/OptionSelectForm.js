@@ -163,6 +163,7 @@ const OptionSelectForm = ({ dinnerId }) => {
             if(detail !== '') {
                 const tmp = {
                     menuId: v.menuId,
+                    menuName: v.menuName,
                     detail,
                     price,
                 };
@@ -174,6 +175,7 @@ const OptionSelectForm = ({ dinnerId }) => {
             if(originalOpt.has(v.menuId)) {
                 data.push({
                     menuId: v.menuId,
+                    menuName: v.menuName,
                     detail: 'remove',
                     price: -(v.normalPrice - 1000),
                 });

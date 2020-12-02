@@ -8,6 +8,7 @@ import StyleSelectForm from './StyleSelectForm';
 import OptionSelectForm from './OptionSelectForm';
 import OrderInfoForm from './OrderInfoForm';
 import TimeSelectForm from './TimeSelectForm';
+import ResultPage from './ResultPage';
 
 const switchSubTitle = (step) => {
     switch(step) {
@@ -20,7 +21,7 @@ const switchSubTitle = (step) => {
         case 4:
             return 'Time';
         case 5:
-            return 'Info'
+            return 'Order'
         default:
             return '';
     }
@@ -38,6 +39,8 @@ const switchSelectForm = (step, dinnerId) => {
             return <TimeSelectForm />;
         case 5:
             return <OrderInfoForm />
+        case 6:
+            return <ResultPage />
         default:
             return '';
     }
@@ -60,6 +63,8 @@ const OrderForm = () => {
                 break;
             case 5:
                 dispatch(backToTimeSel());
+            case 6:
+                dispatch(backToDinner());
             default:
                 break;
         }
@@ -68,9 +73,11 @@ const OrderForm = () => {
     return (
         <Container>
             <Title>
-                주문하기
+                {step === 6 ? '주문완료' : '주문하기'}
                 <Sub>{switchSubTitle(step)}</Sub>
-                {(step > 1 && step < 5) && <BackBtn className="btn-hover" onClick={onClickBackBtn}>뒤로</BackBtn>}
+                {step === 6 && 
+                    <BackBtn className="btn-hover" onClick={onClickBackBtn}>처음으로</BackBtn>}
+                {(step > 1 && step < 6) && <BackBtn className="btn-hover" onClick={onClickBackBtn}>뒤로</BackBtn>}
             </Title>
             {switchSelectForm(step, dinnerId)}
         </Container>

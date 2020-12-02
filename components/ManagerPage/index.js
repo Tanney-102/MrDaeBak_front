@@ -9,6 +9,7 @@ import { LogoutBtn } from '../UserPage/style';
 import StockPage from '../StockPage';
 import LoadingPage from '../LoadingPage';
 import { logoutRequest } from '../../reducers/user';
+import OrderList from '../OrderList';
 
 const ManagerPage = () => {
     const winSize = useWindowSize();
@@ -51,8 +52,8 @@ const ManagerPage = () => {
                         </MenuBtn>
                     </BtnContainer>
                 </PageContainer>
-                <PageContainer style={{width:winSize[0], height:winSize[1]}}>
-                    주문 확인 페이지
+                <PageContainer style={{width:winSize[0], minHeight:winSize[1]}}>
+                    <OrderList />
                 </PageContainer>
             </Slide>
             <BackBtn

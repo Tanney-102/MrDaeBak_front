@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Main, LogoutBtn, BtnContainer } from './style';
 import { logoutRequest } from '../../reducers/user';
+import { backToDinner } from '../../reducers/order';
 import useWindowSize from '../../hooks/useWindowSize'
 import Header from '../Header'
 import OrderForm from '../OrderForm';
@@ -15,6 +16,7 @@ const UserPage = () => {
     const logout = useCallback(() => {
         localStorage.removeItem('Token');
         dispatch(logoutRequest());
+        dispatch(backToDinner());
     }, []);
 
     return (

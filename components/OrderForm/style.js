@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import theme from '../../style/theme';
+import { InputContainer } from '../LoginForm/style';
 
 export const Container = styled.div`
     width:76%;
@@ -219,14 +220,80 @@ export const SizeUpBtn = styled.button`
 
 export const TimeBtnContainer = styled.div`
     width:100%;
-    max-width: 900px;
-    height:300px;
+    max-width: 1200px;
+    height:200px;
     display:flex;
     justify-content: space-between;
     align-items: center;
 
-    @media ${theme.mobileL} {
+    @media ${theme.tabletS} {
         flex-direction: column;
-        height:1000px;
+        height:500px;
+    }
+`;
+
+export const TimeBtn = styled.button`
+    width: 17%;   
+    max-width:150px;
+    height:80px;
+    border: 2px solid #3D7365;
+    border-radius:10px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    @media ${theme.tabletS} {
+        width: 100%;
+        max-width:350px;
+        justify-content:space-between;
+        flex-direction: row;
+        padding: 0 10px;
+    }
+`;
+
+export const InfoContainer = styled.div`
+    width:100%;
+    max-width:700px;
+    padding:0 10px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+export const Input = styled.input`
+    display:inline-block;
+    width:85%;
+    height: 25px;
+    border:1px solid #8c8a89;
+    border-radius: 5px;
+
+    @media ${theme.tabletS} {
+        width:80%;
+    }
+
+    @media ${theme.mobileL} {
+        width:75%;
+    }
+
+    @media ${theme.mobileS} {
+        width:65%;
+    }
+`;
+
+export const MealNum = styled.div`
+    width:85%;
+
+    @media ${theme.tabletS} {
+        width:80%;
+    }
+
+    @media ${theme.mobileL} {
+        width:75%;
+    }
+
+    @media ${theme.mobileS} {
+        width:65%;
     }
 `;

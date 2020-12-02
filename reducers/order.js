@@ -10,17 +10,20 @@ export const initialState = {
     price: 0,
     stylePrice: 0,
     optionPrice: 0,
-    mealNum: 0,
     time: '',
+    mealNum: '',
+    address: '',
 };
 
 export const SET_DINNER_NAME = 'SET_DINNER_NAME';
 export const SET_DINNER_STYLE = 'SET_DINNER_STYLE';
 export const SET_DINNER_OPTION = 'SET_DINNER_OPTION';
+export const SET_RESERV_TIME = 'SET_RESERV_TIME';
 export const BACK_TO_DINNER = 'BACK_TO_DINNER';
 export const BACK_TO_STYLE = 'BACK_TO_STYLE';
 export const BACK_TO_OPTION = 'BACK_TO_OPTION';
 export const BACK_TO_TIME_SEL = 'BACK_TO_TIME_SEL';
+export const GO_TO_RESULT = 'GO_TO_RESULT';
 
 export const setDinnerName = (data) => {
     return {
@@ -60,6 +63,7 @@ export const setDinnerOption = (data) => {
     data.forEach(v => {
         const tmp = {
             menuId: v.menuId,
+            menuName: v.menuName,
             detail: v.detail,
         }
         options.push(tmp);
@@ -72,8 +76,17 @@ export const setDinnerOption = (data) => {
             options,
             priceSum,
         },
-    }
+    };
 };
+
+export const setReservTime = (time) => {
+    return {
+        type: SET_RESERV_TIME,
+        data: {
+            time,
+        }
+    };
+}
 
 export const backToDinner = () => {
     return {
@@ -96,6 +109,16 @@ export const backToOption = () => {
 export const backToTimeSel = () => {
     return {
         type: BACK_TO_TIME_SEL,
+    };
+}
+
+export const goToResult = (mealNum, address) => {
+    return {
+        type: GO_TO_RESULT,
+        data: {
+            mealNum,
+            address,
+        }
     };
 }
 
@@ -124,14 +147,26 @@ const reducer = (state=initialState, action) => {
                 option: action.data.options,
                 OptionPrice: action.data.priceSum,
             };
-        case BACK_TO_DINNER:
+        case SET_RESERV_TIME:
             return {
                 ...state,
+                step:5,
+                time: action.data.time,
+            };
+        case BACK_TO_DINNER:
+            return {
                 step: 1,
                 dinnerId: '',
                 dinnerName: '',
                 special: '',
+                dinnerStyle: '',
+                option: [],
                 price: 0,
+                stylePrice: 0,
+                optionPrice: 0,
+                time: '',
+                mealNum: '',
+                address: '',
             };
         case BACK_TO_STYLE:
             return {
@@ -153,6 +188,13 @@ const reducer = (state=initialState, action) => {
                 step: 4,
                 time: '',
             };
+        case GO_TO_RESULT:
+            return {
+                ...state,
+                step:6,
+                mealNum: action.data.mealNum,
+                address: action.data.address,
+            }
         default:
             return state;
     }
