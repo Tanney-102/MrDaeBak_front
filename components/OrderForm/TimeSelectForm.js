@@ -17,9 +17,9 @@ const TimeSelectForm = () => {
                     <br />
                     * 배달 시간으로부터 한 시간 전까지만 주문이 가능합니다.
                 </div>
-                <TimeSelectForm>
+                <TimeBtnContainer>
                     sdfsfd
-                </TimeSelectForm>
+                </TimeBtnContainer>
         </FormContainer>
     )
 };
