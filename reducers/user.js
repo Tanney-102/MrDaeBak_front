@@ -72,7 +72,7 @@ export const verifyLoginState = async () => {
             const result = res.data;
 
             if(result.logged_in === 'false') {
-                return { type : '', data : { userId:'', userName:'', classification:'' } }
+                return { type : '', data : { userId:'', userName:'', addree:'', classification:'' } }
             }
 
             return {
@@ -81,6 +81,7 @@ export const verifyLoginState = async () => {
                     userId : result.user_id,
                     userName : result.user_name,
                     classification : result.classification,
+                    address: result.address,
                 }
             }
         })
