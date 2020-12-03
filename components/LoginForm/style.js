@@ -10,7 +10,7 @@ export const Title = styled.h1`
     color:#333;
 
     display:flex;
-    justify-content:flex-begin;
+    justify-content:space-between;
 `;
 
 export const Form = styled.form`
@@ -80,4 +80,22 @@ export const HorizontalLine = styled.div`
 export const GuestLogin = styled.button`
     font-size:0.8rem;
     color:#5DB09B;
+`;
+
+export const BackBtn = styled.button`
+    width:60px;
+    height:20px;
+    border:2px solid #3D7365;
+    border-radius:10px;
+    font-size:0.6rem;
+    color:#3D7365;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    &:hover {
+        color:#fff;
+        background-color:#3D7365;
+    }
 `;

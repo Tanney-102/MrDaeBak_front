@@ -39,6 +39,10 @@ const MainPage = () => {
         setCurPage(2);
     }, []);
 
+    const setMainPage = useCallback(() => {
+        setCurPage(0);
+    }, []);
+
     useEffect(() => {
         window.addEventListener('scroll', movePage);
         preload();
@@ -49,6 +53,10 @@ const MainPage = () => {
     }, []);
 
     useEffect(() => {
+        if(curPage === 2) {
+            return ;
+        }
+
         if(scrollDir^curPage) setCurPage(scrollDir)
     }, [scrollDir]);
 
@@ -87,7 +95,7 @@ const MainPage = () => {
                         <ManagerLoginBtn className="btn-hover" onClick={moveToMLoginPage}>사장님으로 로그인 하기</ManagerLoginBtn>
                     </SecondPage>
                     <ThirdPage style={{height:winSize[1]*1.01}}>
-                        <LoginForm loginFormType={loginType} />
+                        <LoginForm loginFormType={loginType} backCallback={setMainPage} />
                     </ThirdPage>
                 </Slide>
             </Main>

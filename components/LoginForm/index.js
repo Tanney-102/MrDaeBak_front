@@ -5,10 +5,10 @@ import { useDispatch } from 'react-redux';
 
 import theme from '../../style/theme';
 import useInput from '../../hooks/useInput';
-import { Form, Title, InputContainer, Input, ButtonContainer, Button, Partition, HorizontalLine, GuestLogin } from './style'; 
+import { Form, Title, InputContainer, Input, ButtonContainer, Button, Partition, HorizontalLine, GuestLogin, BackBtn } from './style'; 
 import { loginRequest, LOG_IN } from '../../reducers/user';
 
-const LoginForm = ({ loginFormType }) => {
+const LoginForm = ({ loginFormType, backCallback }) => {
     const [id, onChangeId] = useInput('');
     const [password, onChangePassword] = useInput('');
     const [btnActivation, setBtnActivation] = useState(false);
@@ -58,7 +58,10 @@ const LoginForm = ({ loginFormType }) => {
 
     return (
         <Form ref={loginFormRef} onSubmit={e => { e.preventDefault(); }}>
-            <Title>{loginFormType==='member' ? '회원 로그인' : '관리자 로그인'}</Title>
+            <Title>
+                {loginFormType==='member' ? '회원 로그인' : '관리자 로그인'}
+                <BackBtn className="btn-hover" onClick={backCallback}>돌아가기</BackBtn>
+            </Title>
             <InputContainer className="input-container">
                 <Input type="text" name="user_id" value={id} placeholder="아이디" autoComplete="off" onChange={onChangeId} />
             </InputContainer>
@@ -99,6 +102,7 @@ const LoginForm = ({ loginFormType }) => {
 
 LoginForm.propTypes = {
     loginFormType: PropTypes.string.isRequired,
+    backCallback: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
