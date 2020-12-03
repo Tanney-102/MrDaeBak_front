@@ -10,7 +10,7 @@ const OrderResultCard = ({ orderInfo }) => {
                     {orderInfo.userName} 님께서 주문 하셨습니다.
                 </NameCard>
             </div>
-            <div style={{display:'flex', width:'100%', height:'30px'}}>
+            <div style={{display:'flex', flexWrap:'wrap', width:'100%', height:'30px'}}>
                 <NameCard style={{margin:'0 6px 0 0'}}>
                     {orderInfo.dinnerName}
                 </NameCard>
