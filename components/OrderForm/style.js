@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import theme from '../../style/theme';
-import { InputContainer } from '../LoginForm/style';
 
 export const Container = styled.div`
     width:76%;
@@ -10,6 +9,14 @@ export const Container = styled.div`
     display: flex;
     flex-direction:column;
     align-items:center;
+
+    @media ${theme.mobileL} {
+        width:90%;
+    }
+
+    @media ${theme.mobileS} {
+        width:100%;
+    }
 `;
 
 export const Title = styled.h1`
