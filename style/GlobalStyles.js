@@ -6,6 +6,8 @@ import theme from './theme';
 
 const GlobalStyles = createGlobalStyle`
     ${reset}
+    @import url(fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
+
     * {
         box-sizing:border-box;
         font-family:'나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
@@ -38,6 +40,10 @@ const GlobalStyles = createGlobalStyle`
     
     .btn-hover:hover {
         cursor:pointer;
+    }
+
+    .hover-shadow:hover {
+        box-shadow:1px 1px 1px 1px #666;
     }
 
     input {
@@ -87,6 +93,15 @@ const GlobalStyles = createGlobalStyle`
         src:
             url(/font/FjallaOne-Regular.ttf) format('truetype'), 
             url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap'),
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'JejuMyeongjo';
+        src:
+            url(/font/JejuMyeongjo.ttf) format('truetype'), 
+            url(/font/JejuMyeongjoOTF.otf) format('opentype'), 
         font-weight: normal;
         font-style: normal;
     }

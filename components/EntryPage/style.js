@@ -11,31 +11,36 @@ export const Slide = styled.div`
 
 export const FirstPage = styled.div`
     width:100%;
-
-    background: no-repeat url("/img/main_back_img.jpg");
-    background-size:100%;
-    opacity: 0.7;
     position:relative;
 
-    @media (max-width:1305px) {
+    &::before {
+        content: "";
+        background: no-repeat url("/img/main_back_img.jpg");
         background-size:cover;
         background-position:center;
+        opacity: 0.8;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
     }
 `;
 
 export const MainCopy = styled.div`
-    font-family: 'Cafe24Oneprettynight', '나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
-    font-size:4.5rem;
+    font-family: 'Nanum Myeongjo', sans-serif;
+    font-size:4rem;
 
     width:60%;
     margin:0 auto;
     padding:230px 10px 0;
     color:#eee;
     line-height:1.5;
+    position:relative;
 
     @media ${theme.tabletL} {
         width:80%;
-        font-size:6vw;
+        font-size:5vw;
     }
 
     @media ${theme.mobileL} {

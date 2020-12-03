@@ -16,6 +16,7 @@ const App = ({ Component }) => {
                 <meta charSet="utf-8" />
                 <title>Mr. DaeBak</title>
                 <link rel="preconnect" href="https://fonts.gstatic.com" />
+                <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet" />
                 <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet" />
             </Head>
             <GlobalStyles />
