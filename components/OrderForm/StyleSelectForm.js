@@ -22,6 +22,12 @@ const StyleSelectForm = () => {
 
     const setStyleInfo = useCallback(() => {
         const styles = ['Simple', 'Grand', 'Deluxe'];
+
+        if(selectedIdx === '') {
+            alert('스타일을 선택해주세요');
+            return;
+        }
+
         dispatch(setDinnerStyle(styles[parseInt(selectedIdx)-1], special));
     }, [selectedIdx]);
 

@@ -47,7 +47,7 @@ const OrderResultCard = ({ orderInfo }) => {
                         let desc = '';
                         if(op.detail === 'remove') {
                             desc = '삭제';
-                        } else if(op.detail === 'add') {
+                        } else if(op.detail.trim() === 'add') {
                             desc = '추가';
                         } else if(op.detail === 'sizeup') {
                             desc = '사이즈업';

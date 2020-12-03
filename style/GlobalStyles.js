@@ -58,6 +58,7 @@ const GlobalStyles = createGlobalStyle`
     @font-face {
         font-family: 'Cafe24Oneprettynight';
         src:
+            url(/font/Cafe24Oneprettynight.ttf) format('truetype'), 
             url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff') format('woff');
         font-weight: normal;
         font-style: normal;
@@ -66,6 +67,7 @@ const GlobalStyles = createGlobalStyle`
     @font-face {
         font-family: 'Cafe24Shiningstar';
         src:
+            url('Cafe24Shiningstar.ttf') format('truetype'), 
             url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Shiningstar.woff') format('woff');
         font-weight: normal;
         font-style: normal;
