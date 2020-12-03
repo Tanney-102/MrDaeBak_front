@@ -29,7 +29,7 @@ const ManagerPage = () => {
 
     useEffect(() => {
         if(loaded) {
-            slideRef.current.style.transform = `translateX(-${curPage*100/3}%)`;
+            slideRef.current.style.transform = `translateX(-${curPage*100/3}%) translateY(0px)`;
         }
     }, [curPage, loaded]);
 

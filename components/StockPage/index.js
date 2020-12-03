@@ -84,9 +84,9 @@ const StockPage = () => {
                     <thead>
                         <tr style={{display:'flex'}}>
                             <Th style={{width:'30px'}}>No</Th>
-                            <Th style={{width:'calc((100%-110px)*2/5)'}}>메뉴 이름</Th>
+                            <Th style={{width:'36%'}}>메뉴 이름</Th>
                             <Th style={{width:'80px'}}>수량</Th>
-                            <Th style={{width:'calc((100%-110px)*3/5)'}}>비고</Th>
+                            <Th style={{width:'54%'}}>비고</Th>
                         </tr>
                     </thead>
                     <tbody>
@@ -94,7 +94,7 @@ const StockPage = () => {
                             return(
                             <tr style={{display:'flex'}} key={v.menu_id}>
                                 <Td style={{width:'30px'}}>{i+1}</Td>
-                                <Td style={{width:'calc((100%-110px)*2/5)'}}>
+                                <Td style={{width:'36%'}}>
                                     {updateMode
                                     ? <Input 
                                             type="text" 
@@ -128,7 +128,7 @@ const StockPage = () => {
                                                 })}} />
                                     : v.stock}
                                 </Td>
-                                <Td style={{width:'calc((100%-110px)*3/5)'}}>
+                                <Td style={{width:'54%'}}>
                                     {updateMode
                                     ? <Input 
                                             type="text"
