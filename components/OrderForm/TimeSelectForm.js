@@ -33,12 +33,6 @@ const TimeSelectForm = () => {
             const _orderable = times.map((t, i) => {
                 return (_nums[i] < 5) && (parseInt(t.split(':')[0]) - 1 > (new Date()).getHours());
             });
-
-            for(let i=0; i<5; i++){
-                if(_nums[i] < 5) {
-                    _orderable[i] = true;
-                }
-            }
                     
             console.log(_nums);
             setOrderedNum(_nums);
