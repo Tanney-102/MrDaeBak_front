@@ -34,6 +34,7 @@ export const Sub = styled.span`
 `;
 
 export const FormContainer = styled.div`
+    font-family: 'Fjalla One', '나눔고딕', NanumGothic, '돋움', Dotum, sans-serif;
     width:80%;
     display:flex;
     margin-top:50px;

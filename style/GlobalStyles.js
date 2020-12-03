@@ -72,6 +72,24 @@ const GlobalStyles = createGlobalStyle`
         font-weight: normal;
         font-style: normal;
     }
+
+    @font-face {
+        font-family: 'Anton-Regular';
+        src:
+            url(/font/Anton-Regular.ttf) format('truetype'), 
+            url('https://fonts.googleapis.com/css2?family=Anton&display=swap'),
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'FjallaOne-Regular';
+        src:
+            url(/font/FjallaOne-Regular.ttf) format('truetype'), 
+            url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap'),
+        font-weight: normal;
+        font-style: normal;
+    }
 `;
 
 export default GlobalStyles;
